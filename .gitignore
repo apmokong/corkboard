@@ -1,0 +1,9 @@
+**/node_modules/
+**/dist/
+**/.quasar/
+**/.env
+**/vendor/
+**/storage/*.key
+**/storage/app/public/
+**/storage/framework/
+**/storage/logs/

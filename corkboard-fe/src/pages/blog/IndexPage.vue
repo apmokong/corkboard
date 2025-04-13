@@ -25,40 +25,14 @@
     >
       <template v-slot:body-cell-actions="props">
         <q-td align="right">
-          <q-btn-group flat dense>
-            <q-btn
-              color="info"
-              label="View"
-              size="sm"
-              @click="previewBlog(props.row)"
-              aria-label="View"
-            />
-
-            <q-btn
-              color="warning"
-              icon="edit"
-              size="sm"
-              @click="editBlog(props.row)"
-              :aria-label="'Edit'"
-            />
-
-            <q-btn
-              :color="props.row.status === 'published' ? 'negative' : 'positive'"
-              :icon="props.row.status === 'published' ? 'visibility_off' : 'visibility'"
-              size="sm"
-              @click="changeStatus(props.row)"
-              :aria-label="props.row.status === 'published' ? 'Hide Blog' : 'Publish Blog'"
-            />
-
-            <q-btn
-              color="red"
-              icon="delete"
-              size="sm"
-              @click="archiveBlog(props.row)"
-              aria-label="Delete"
-            />
-          </q-btn-group>
-
+          <q-btn-dropdown dense flat size="sm">
+            <q-list>
+              <q-item clickable @click="editBlog(props.row)">Edit</q-item>
+              <q-item clickable @click="changeStatus(props.row)">Change Status</q-item>
+              <q-item clickable @click="previewBlog(props.row)">Preview</q-item>
+              <q-item clickable @click="archiveBlog(props.row)">Archive</q-item>
+            </q-list>
+          </q-btn-dropdown>
         </q-td>
       </template>
     </q-table>
@@ -120,7 +94,7 @@ const columns: QTableColumn[] = [
     align: 'right',
     headerClasses: 'text-center',
     sortable: false,
-    style: 'width: 20%;'
+    style: 'width: 10%;'
   }
 ]
 
